@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplicación de la NFL</title>
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Aplicación de la NFL</h1>
+  <button onclick="toggleInfo('output', 'fetchTodoIds')">Obtener Lista de Pendientes (Solo IDs)</button>
+  <div id="output" class="hidden"></div>
+  
+  <button onclick="toggleInfo('output2', 'fetchTodoIdsTitles')">Obtener Lista de Pendientes (IDs y Títulos)</button>
+  <div id="output2" class="hidden"></div>
+  
+  <button onclick="toggleInfo('output3', 'fetchTodoIdsTitlesUnresolved')">Obtener Lista de Pendientes sin Resolver (IDs y Títulos)</button>
+  <div id="output3" class="hidden"></div>
+
+  <button onclick="toggleInfo('output4', 'fetchTodoIdsTitlesResolved')">Obtener Lista de Pendientes Resueltos (IDs y Títulos)</button>
+  <div id="output4" class="hidden"></div>
+
+  <button onclick="toggleInfo('output5', 'fetchTodoIdsUserIds')">Obtener Lista de Pendientes (IDs y userlD)</button>
+  <div id="output5" class="hidden"></div>
+
+  <button onclick="toggleInfo('output6', 'fetchTodoIdsUserIdsResolved')">Obtener Lista de Pendientes Resueltos (IDs y userID)</button>
+  <div id="output6" class="hidden"></div>
+
+  <button onclick="toggleInfo('output7', 'fetchTodoIdsUserIdsUnresolved')">Obtener Lista de Pendientes sin Resolver (IDs y userID)</button>
+  <div id="output7" class="hidden"></div>
+
+  <script src="Examen.js"></script>
+</body>
+</html>
