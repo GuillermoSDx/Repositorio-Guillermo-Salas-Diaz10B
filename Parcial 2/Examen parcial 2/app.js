@@ -1,7 +1,27 @@
+
 // Detectar si podemos usar el Service Workers
 if(navigator.serviceWorker){
     navigator.serviceWorker.register('/sw.js')
 }
+
+self.addEventListener('install', event => {
+  console.log("Instalando SW");
+
+  const instalacion = new Promise((resolve, reject) => {
+      setTimeout(() => {
+          console.log("SW: Instalación finalizada");
+          self.skipWaiting();
+          resolve();
+      }, 100);
+  });
+
+  event.waitUntil(instalacion);
+});
+
+
+self.addEventListener('activate', event=>{
+  console.log("SW activado");
+})
 // Función para mostrar la lista de todos los pendientes (solo IDs)
 function mostrarTodosIds() {
     fetch('http://jsonplaceholder.typicode.com/todos')
@@ -95,10 +115,13 @@ function mostrarTodosSinResolver() {
 
   
   // Agregar eventos de clic para las opciones del menú
-  document.getElementById('opcion1').addEventListener('click', mostrarTodosIds);
-  document.getElementById('opcion2').addEventListener('click', mostrarTodosIdsAndTitles);
-  document.getElementById('opcion3').addEventListener('click', mostrarTodosUnresolved);
-  document.getElementById('opcion4').addEventListener('click', mostrarTodosResueltos);
-  document.getElementById('opcion5').addEventListener('click', mostrarTodosIdsAndUserId);
-  document.getElementById('opcion6').addEventListener('click', mostrarPendientesResueltos);
-  document.getElementById('opcion7').addEventListener('click', mostrarTodosSinResolver);
+  document.addEventListener('DOMContentLoaded', function() {
+    // Agregar eventos de clic para las opciones del menú
+    document.getElementById('opcion1').addEventListener('click', mostrarTodosIds);
+    document.getElementById('opcion2').addEventListener('click', mostrarTodosIdsAndTitles);
+    document.getElementById('opcion3').addEventListener('click', mostrarTodosUnresolved);
+    document.getElementById('opcion4').addEventListener('click', mostrarTodosResueltos);
+    document.getElementById('opcion5').addEventListener('click', mostrarTodosIdsAndUserId);
+    document.getElementById('opcion6').addEventListener('click', mostrarPendientesResueltos);
+    document.getElementById('opcion7').addEventListener('click', mostrarTodosSinResolver);
+});

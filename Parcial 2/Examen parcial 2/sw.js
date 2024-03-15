@@ -2,9 +2,11 @@
 function publishNFLLogo(event) {
     // Publicar el logo de la NFL
     event.respondWith(
-      fetch('img/logo.jpg')
+      fetch('img/logo.jpg'),
+      console.log(event)
         .then(response => response.blob())
         .then(blob => new Response(blob, { headers: { 'Content-Type': 'image/jpeg' } }))
+       
     );
   }
   
@@ -46,4 +48,5 @@ function publishNFLLogo(event) {
   self.addEventListener('activate', event => {
     console.log('Service Worker activado');
   });
+  
   
